@@ -1,4 +1,5 @@
-dist/
+dist-server/
+dist-client/
 node_modules/
 yarn*.*
 package-lock.json
