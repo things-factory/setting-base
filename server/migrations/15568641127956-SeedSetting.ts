@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner, getRepository } from 'typeorm'
-import { Domain, CommonCode, CommonCodeDetail } from '@things-factory/shell'
+import { Domain } from '@things-factory/shell'
+import { CommonCode, CommonCodeDetail } from '@things-factory/code-base'
 import { Setting } from '../entities'
 
 const SEED_SETTING = [
