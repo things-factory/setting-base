@@ -1,40 +1,21 @@
 import { MigrationInterface, QueryRunner, getRepository } from 'typeorm'
 import { Domain } from '@things-factory/shell'
-import { CommonCode, CommonCodeDetail } from '@things-factory/code-base'
 import { Setting } from '../entities'
-
-const SEED_SETTING = [
-  {
-    name: 'Setting 1'
-  },
-  {
-    name: 'Setting 2'
-  }
-]
+import { SETTINGS as SEED_SETTINGS } from '../seed-data/settings'
 
 export class SeedSetting1556864112795 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
+    const repository = getRepository(Setting)
     const domainRepository = getRepository(Domain)
     const domain = await domainRepository.findOne({
       name: 'SYSTEM'
     })
 
-    const repository = getRepository(Setting)
-    const commonCodeRepository = getRepository(CommonCode)
-
-    const foundCode : CommonCode = await commonCodeRepository.findOne(
-      { name: 'CATEGORIES' },
-      {
-        relations: ['details']
-      }
-    )
-
     try {
-      SEED_SETTING.forEach(async setting => {
+      SEED_SETTINGS.forEach(async setting => {
         await repository.save({
           ...setting,
-          domain,
-          category: foundCode.details[0].name
+          domain
         })
       })
     } catch (e) {
@@ -44,7 +25,7 @@ export class SeedSetting1556864112795 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<any> {
     const repository = getRepository(Setting)
-    SEED_SETTING.forEach(async setting => {
+    SEED_SETTINGS.forEach(async setting => {
       let recode = await repository.findOne({ name: setting.name })
       await repository.remove(recode)
     })
