@@ -1,5 +1,7 @@
-import { Setting } from './setting'
+import { Filter, Pagination, Sorting } from '@things-factory/shell'
 import { NewSetting } from './new-setting'
+import { Setting } from './setting'
+import { SettingList } from './setting-list'
 import { SettingPatch } from './setting-patch'
 
 export const Mutation = `
@@ -18,8 +20,8 @@ export const Mutation = `
 `
 
 export const Query = `
-  settings: [Setting]
+  settings(filters: [Filter], pagination: Pagination, sortings: [Sorting]): SettingList
   setting(name: String!): Setting
 `
 
-export const Types = [Setting, NewSetting, SettingPatch]
+export const Types = [Filter, Pagination, Sorting, Setting, NewSetting, SettingPatch, SettingList]
