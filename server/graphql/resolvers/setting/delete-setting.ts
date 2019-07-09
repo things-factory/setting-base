@@ -2,9 +2,7 @@ import { getRepository } from 'typeorm'
 import { Setting } from '../../../entities'
 
 export const deleteSetting = {
-  async deleteSetting(_, { name, patch }) {
-    const repository = getRepository(Setting)
-
-    return await repository.delete(name)
+  async deleteSetting(_: any, { name }, context: any) {
+    return await getRepository(Setting).delete({ domain: context.domain, name })
   }
 }
