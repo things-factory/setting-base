@@ -16,6 +16,9 @@ export class Setting {
   name: string
 
   @Column('text')
+  description: string
+
+  @Column('text')
   category: string
 
   @Column('text', {

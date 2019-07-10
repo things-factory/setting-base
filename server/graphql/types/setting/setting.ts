@@ -5,6 +5,7 @@ export const Setting = gql`
     id: String
     domain: Domain
     name: String
+    description: String
     category: String
     value: String
     creator: User
