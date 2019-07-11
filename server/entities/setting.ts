@@ -12,16 +12,16 @@ export class Setting {
   @ManyToOne(type => Domain)
   domain: Domain
 
-  @Column('text')
+  @Column()
   name: string
 
-  @Column('text')
+  @Column()
   description: string
 
-  @Column('text')
+  @Column()
   category: string
 
-  @Column('text', {
+  @Column({
     nullable: true
   })
   value: string
