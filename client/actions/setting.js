@@ -1,1 +1,2 @@
 export const ADD_SETTING = 'ADD_SETTING'
+export const REMOVE_SETTING = 'REMOVE_SETTING'

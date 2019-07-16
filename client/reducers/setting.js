@@ -7,10 +7,15 @@ const INITIAL_STATE = {
 const setting = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_SETTING:
-      let setting = action.setting
       return {
         ...state,
-        settings: [...state.settings, setting]
+        settings: [...state.settings, action.setting]
+      }
+
+    case REMOVE_SETTING:
+      return {
+        ...state,
+        settings: state.settings.filter(i => i !== action.setting)
       }
 
     default:
