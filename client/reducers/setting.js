@@ -1,4 +1,4 @@
-import { ADD_SETTING } from '../actions/setting'
+import { ADD_SETTING, REMOVE_SETTING } from '../actions/setting'
 
 const INITIAL_STATE = {
   settings: []
