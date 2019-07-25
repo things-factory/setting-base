@@ -14,6 +14,6 @@
     "baseUrl": "./",
     "lib": ["esnext.asynciterable", "es7", "es2017"]
   },
-  "include": ["./server/**/*", "../setting-test/server/seed-data"],
+  "include": ["./server/**/*"],
   "exclude": ["**/*.spec.ts"]
 }
