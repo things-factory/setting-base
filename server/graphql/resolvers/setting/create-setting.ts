@@ -6,8 +6,8 @@ export const createSetting = {
     return await getRepository(Setting).save({
       domain: context.domain,
       ...setting,
-      creatorId: context.state.user.id,
-      updaterId: context.state.user.id
+      creator: context.state.user,
+      updater: context.state.user
     })
   }
 }
