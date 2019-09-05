@@ -2,7 +2,7 @@ import { getRepository } from 'typeorm'
 import { Setting } from '../../../entities'
 
 export const updateMultipleSetting = {
-  async updateMultipleWorker(_: any, { patches }, context: any) {
+  async updateMultipleSetting(_: any, { patches }, context: any) {
     let results = []
     const _createRecords = patches.filter((patch: any) => patch.cuFlag === '+')
     const _updateRecords = patches.filter((patch: any) => patch.cuFlag.toUpperCase() === 'M')
