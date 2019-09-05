@@ -1,9 +1,10 @@
-import { settingResolver } from './setting'
-import { settingsResolver } from './settings'
-
-import { updateSetting } from './update-setting'
 import { createSetting } from './create-setting'
 import { deleteSetting } from './delete-setting'
+import { deleteSettings } from './delete-settings'
+import { settingResolver } from './setting'
+import { settingsResolver } from './settings'
+import { updateMultipleSetting } from './update-multiple-setting'
+import { updateSetting } from './update-setting'
 
 export const Query = {
   ...settingsResolver,
@@ -12,6 +13,8 @@ export const Query = {
 
 export const Mutation = {
   ...updateSetting,
+  ...updateMultipleSetting,
   ...createSetting,
-  ...deleteSetting
+  ...deleteSetting,
+  ...deleteSettings
 }

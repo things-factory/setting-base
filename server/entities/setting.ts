@@ -9,7 +9,9 @@ export class Setting {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
-  @ManyToOne(type => Domain)
+  @ManyToOne(type => Domain, {
+    nullable: false
+  })
   domain: Domain
 
   @Column()
