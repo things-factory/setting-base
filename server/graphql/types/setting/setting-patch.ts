@@ -6,5 +6,6 @@ export const SettingPatch = gql`
     description: String
     category: String
     value: String
+    cuFlag: String
   }
 `
