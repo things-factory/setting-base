@@ -19,6 +19,10 @@ export class SettingLet extends LitElement {
           color: var(--setting-title-color);
           font: var(--setting-title-font);
         }
+
+        slot[name='content']::slotted(*) {
+          font: var(--setting-content-font);
+        }
       `
     ]
   }
