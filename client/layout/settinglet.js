@@ -7,7 +7,7 @@ export class SettingLet extends LitElement {
         :host {
           display: block;
 
-          padding: 20px;
+          padding: var(--setting-content-padding);
           text-transform: capitalize;
         }
 
@@ -16,9 +16,8 @@ export class SettingLet extends LitElement {
         }
 
         slot[name='title']::slotted(*) {
-          color: #c0504d;
-          text-align: left;
-          font-size: 1em;
+          color: var(--setting-title-color);
+          font: var(--setting-title-font);
         }
       `
     ]
