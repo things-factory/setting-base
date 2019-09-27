@@ -7,8 +7,10 @@ export const updateSetting = {
     const setting = await repository.findOne({ domain: context.state.domain, name })
 
     return await repository.save({
+      creater: context.state.user,
       ...setting,
       ...patch,
+      domain: context.state.domain,
       updater: context.state.user
     })
   }
