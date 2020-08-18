@@ -23,12 +23,10 @@ export class SeedPriviledge1567671344025 implements MigrationInterface {
       domains.map(async domain =>
         Promise.all(
           SEEDS_PRIVILEDGES.map(async (priviledge: Priviledge) => {
-            return {
+            await getRepository(Priviledge).save({
               ...priviledge,
               domain
-            }
-
-            await getRepository(Priviledge).save(priviledge)
+            })
           })
         )
       )
