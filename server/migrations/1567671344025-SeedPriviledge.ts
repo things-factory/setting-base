@@ -19,30 +19,36 @@ export class SeedPriviledge1567671344025 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const domains = await getRepository(Domain).find()
 
-    try {
-      domains.forEach(async domain => {
-        const priviledge = await Promise.all(
+    return Promise.all(
+      domains.map(async domain =>
+        Promise.all(
           SEEDS_PRIVILEDGES.map(async (priviledge: Priviledge) => {
             return {
               ...priviledge,
               domain
             }
+
+            await getRepository(Priviledge).save(priviledge)
           })
         )
-
-        await getRepository(Priviledge).save(priviledge)
-      })
-    } catch (e) {
-      console.error(e)
-    }
+      )
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
-    const repository = getRepository(Priviledge)
+    const domains = await getRepository(Domain).find()
 
-    SEEDS_PRIVILEDGES.reverse().forEach(async priviledge => {
-      let record = await repository.findOne({ name: priviledge.name })
-      await repository.remove(record)
-    })
+    return Promise.all(
+      domains.map(async domain =>
+        Promise.all(
+          SEEDS_PRIVILEDGES.map(async (priviledge: Priviledge) => {
+            await getRepository(Priviledge).delete({
+              ...priviledge,
+              domain
+            })
+          })
+        )
+      )
+    )
   }
 }
